@@ -1,0 +1,26 @@
+<app-navbar></app-navbar>
+<div class="container-fluid row">
+    <div class="col mt-4 ms-4">
+        <div class="card" style="width: 18rem;">
+            <img src="{{character.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">Character info</h5>
+            <p class="card-text">Name: {{character.name}}</p>
+            <p class="card-text">Status: {{character.status}}</p>
+            <p class="card-text">Species: {{character.species}}</p>
+            <p class="card-text">Gender: {{character.gender}}</p>
+            <p class="card-text">Origin: {{character.origin.name}}</p>
+            <p class="card-text">Location: {{character.location.name}}</p>
+            </div>
+        </div>
+    </div>
+    <div class="col mt-4 ms-4">
+        <h5>List of episodes appearances</h5>
+        <div class="rectangule"  style="width: 18rem;">
+            <p class="card-text" *ngFor="let episode of character.episode"> {{episode}}</p>
+        </div>
+    </div>
+</div>
+
+
+
