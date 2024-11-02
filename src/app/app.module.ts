@@ -11,6 +11,7 @@ import { CardComponent } from './components/card/card.component';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DescriptionComponent } from './components/description/description.component';
+import { View404Component } from './components/view404/view404.component';
 
 
 
@@ -22,7 +23,8 @@ import { DescriptionComponent } from './components/description/description.compo
     SearchComponent,
     CardComponent,
     PaginationComponent,
-    DescriptionComponent
+    DescriptionComponent,
+    View404Component
   ],
   imports: [
     BrowserModule,
