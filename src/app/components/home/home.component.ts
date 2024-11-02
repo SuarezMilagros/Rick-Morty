@@ -15,6 +15,7 @@ export class HomeComponent implements OnInit{
   async ngOnInit(): Promise<void> {
     const data = await this.service.getCharacters().toPromise();
     this.characters = data.results;
+    console.log(this.characters)
     /*this.service.getCharacters().subscribe(data => {
         this.characters = data.results;
     });*/

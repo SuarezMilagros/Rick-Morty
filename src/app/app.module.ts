@@ -7,6 +7,8 @@ import { HomeComponent } from './components/home/home.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './components/search/search.component';
+import { CardComponent } from './components/card/card.component';
+import { PaginationComponent } from './components/pagination/pagination.component';
 
 
 @NgModule({
@@ -14,7 +16,9 @@ import { SearchComponent } from './components/search/search.component';
     AppComponent,
     HomeComponent,
     NavbarComponent,
-    SearchComponent
+    SearchComponent,
+    CardComponent,
+    PaginationComponent
   ],
   imports: [
     BrowserModule,
