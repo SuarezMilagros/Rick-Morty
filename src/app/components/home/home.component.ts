@@ -19,7 +19,4 @@ export class HomeComponent implements OnInit{
         this.characters = data.results;
     });*/
   }
-
-
-
 }
