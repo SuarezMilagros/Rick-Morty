@@ -1,12 +1,10 @@
-
-  <div class="row">
-  <div (click)="goToDescription(item.id)" *ngFor="let item of items" class="card col-md-4" style="width: 18rem;" >
-      <img src="{{item.image}}" class="card-img-top" alt="...">
-      <div class="card-body">
-        <p class="card-text">{{item.name}}</p>
-      </div>
-  </div>
-  </div>
-<mat-paginator [length]="totalItems" [pageSize]="pageSize" [pageSizeOptions]="[5,10,20]" (page)="onPageChange($event)">
-
-  </mat-paginator>
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4">
+    <div (click)="goToDescription(item.id)" *ngFor="let item of items" class="col">
+        <div class="card h-100 custom-card-bg">
+            <img src="{{item.image}}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <p class="card-text">{{item.name}}</p>
+            </div>
+        </div>
+    </div>
+</div>

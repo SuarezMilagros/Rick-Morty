@@ -12,7 +12,7 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { DescriptionComponent } from './components/description/description.component';
 import { View404Component } from './components/view404/view404.component';
-import { TranslatePipe } from './translate.pipe';
+import { TranslatePipe } from './pipes/translate.pipe';
 
 
 
