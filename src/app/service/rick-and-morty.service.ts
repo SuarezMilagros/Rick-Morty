@@ -18,8 +18,9 @@ export class RickAndMortyService {
     return this.http.get<any>(this.url + '/' + id)
   }
 
-  pagedCharacter(pages:number = 1): Observable<any>{
-    return this.http.get<any>(this.url + '/' + pages);
+  pagedCharacter(page: number = 1): Observable<any> {
+    console.log(this.url + '/' + page);
+    return this.http.get<any>(this.url + '/?page='+page);
   }
-
+  
 }

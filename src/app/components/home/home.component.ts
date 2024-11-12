@@ -1,3 +1,4 @@
+
 import { Component, OnInit } from '@angular/core';
 import { RickAndMortyService } from 'src/app/service/rick-and-morty.service';
 
@@ -6,23 +7,24 @@ import { RickAndMortyService } from 'src/app/service/rick-and-morty.service';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit{
-  
+export class HomeComponent implements OnInit {
   characters: any[] = [];
-
-  //paginado
   currentPage: number = 1;
-  totalPages: number = 0;
-  
-  constructor(private service: RickAndMortyService){}
 
- ngOnInit() {
+  constructor(private service: RickAndMortyService) {}
 
-    this.service.getCharacters().subscribe(data => {
-        this.characters = data.results;
-        console.log(this.characters)
-        this.totalPages = data.info.pages;
+  ngOnInit() {
+    this.loadCharacters(this.currentPage); // Carga inicial
+  }
+
+  loadCharacters(pages: number) {
+    this.service.pagedCharacter(pages).subscribe(data => {
+      this.characters = data.results;
+      this.currentPage = pages;
     });
-    
+  }
+
+  onPageChange(page: number) {
+    this.loadCharacters(page); // Cargar personajes para la nueva página
   }
 }

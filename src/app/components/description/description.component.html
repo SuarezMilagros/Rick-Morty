@@ -1,28 +1,31 @@
-<div class="mt-4 ms-4 me-4 ">
-<app-navbar></app-navbar>
+<div class="mt-4 ms-4 me-4">
+    <app-navbar></app-navbar>
 </div>
-<div class="container-fluid row">
-    <div class="col mt-4 ms-4">
-        <div class="card" style="width: 18rem;">
-            <img src="{{character.image}}" class="card-img-top" alt="...">
+<div class="container-fluid row justify-content-start mt-4">
+    <div class="col ms-4">
+        <div class="card character-card" style="width: 18rem;">
+            <img src="{{character.image}}" class="card-img-top" alt="Character Image">
             <div class="card-body">
-            <h5 class="card-title">Character info</h5>
-            <p class="card-text">Name: {{character.name}}</p>
-            <p class="card-text" [ngClass]="{'aliveColor': character.status == 'Alive', 'deadColor': character.status == 'Dead', 'unknownColor' : character.status == 'unknown'}">Status: {{character.status | translate: 'status'}}</p>
-            <p class="card-text">Species: {{character.species}}</p>
-            <p class="card-text">Gender: {{character.gender | translate: 'gender'}}</p>
-            <p class="card-text">Origin: {{character.origin.name}}</p>
-            <p class="card-text">Location: {{character.location.name}}</p>
+                <h5 class="card-title">Character Info</h5>
+                <p class="card-text">Name: {{character.name}}</p>
+                <p class="card-text" [ngClass]="{'aliveColor': character.status == 'Alive', 'deadColor': character.status == 'Dead', 'unknownColor': character.status == 'unknown'}">
+                    Status: {{character.status | translate: 'status'}}
+                </p>
+                <p class="card-text">Species: {{character.species}}</p>
+                <p class="card-text">Gender: {{character.gender | translate: 'gender'}}</p>
+                <p class="card-text">Origin: {{character.origin.name}}</p>
+                <p class="card-text">Location: {{character.location.name}}</p>
             </div>
         </div>
     </div>
-    <div class="col mt-4 ms-4">
-        <h5>List of episodes appearances</h5>
-        <div class="rectangule"  style="width: 18rem;">
-            <p class="card-text" *ngFor="let episode of character.episode"> {{episode}}</p>
+    <div class="col-md-8">
+        <div class="episode-list">
+            <h5 class="episode-title">List of Episodes Appearances</h5>
+            <ul class="episode-items">
+                <li *ngFor="let episode of character.episode">
+                    {{episode}}
+                </li>
+            </ul>
         </div>
     </div>
 </div>
-
-
-
