@@ -10,14 +10,19 @@ export class HomeComponent implements OnInit{
   
   characters: any[] = [];
 
+  //paginado
+  currentPage: number = 1;
+  totalPages: number = 0;
+  
   constructor(private service: RickAndMortyService){}
 
-  async ngOnInit(): Promise<void> {
-    const data = await this.service.getCharacters().toPromise();
-    this.characters = data.results;
-    console.log(this.characters)
-    /*this.service.getCharacters().subscribe(data => {
+ ngOnInit() {
+
+    this.service.getCharacters().subscribe(data => {
         this.characters = data.results;
-    });*/
+        console.log(this.characters)
+        this.totalPages = data.info.pages;
+    });
+    
   }
 }

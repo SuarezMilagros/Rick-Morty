@@ -15,6 +15,7 @@ export class DescriptionComponent implements OnInit {
   constructor(private service: RickAndMortyService, private route: ActivatedRoute){}
 
   async ngOnInit(): Promise<void>{
+    //id que seleccione que viene por parametro en la url
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
