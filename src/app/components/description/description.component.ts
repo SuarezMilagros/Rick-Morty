@@ -10,20 +10,28 @@ import { RickAndMortyService } from 'src/app/service/rick-and-morty.service';
 export class DescriptionComponent implements OnInit {
   character: any;
   id: string = '';
+  episodes: Array<{episode: string, name: string}> = [];
 
+  constructor(private service: RickAndMortyService, private route: ActivatedRoute) {}
 
-  constructor(private service: RickAndMortyService, private route: ActivatedRoute){}
-
-  async ngOnInit(): Promise<void>{
-    //id que seleccione que viene por parametro en la url
+  async ngOnInit(): Promise<void> {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
+
     const data = await this.service.uniqueCharacter(this.id).toPromise();
     this.character = data;
-    console.log(this.character)
+    
+    if (this.character && this.character.episode) {
+      for (let episodeUrl of this.character.episode) {
+        const episodeData = await this.service.getEpisodeData(episodeUrl).toPromise();
+        this.episodes.push({
+          episode: episodeData.episode,
+          name: episodeData.name
+        });
+      }
+    }
   }
-
 }
 
 
