@@ -22,5 +22,9 @@ export class RickAndMortyService {
     console.log(this.url + '/' + page);
     return this.http.get<any>(this.url + '/?page='+page);
   }
+
+  getEpisodeData(url: string): Observable<any> {
+    return this.http.get<any>(url);
+  }
   
 }

@@ -1,31 +1,43 @@
 <div class="mt-4 ms-4 me-4">
-    <app-navbar></app-navbar>
+  <app-navbar></app-navbar>
 </div>
-<div class="container-fluid row justify-content-start mt-4">
-    <div class="col ms-4">
-        <div class="card character-card" style="width: 18rem;">
-            <img src="{{character.image}}" class="card-img-top" alt="Character Image">
-            <div class="card-body">
-                <h5 class="card-title">Character Info</h5>
-                <p class="card-text">Name: {{character.name}}</p>
-                <p class="card-text" [ngClass]="{'aliveColor': character.status == 'Alive', 'deadColor': character.status == 'Dead', 'unknownColor': character.status == 'unknown'}">
-                    Status: {{character.status | translate: 'status'}}
-                </p>
-                <p class="card-text">Species: {{character.species}}</p>
-                <p class="card-text">Gender: {{character.gender | translate: 'gender'}}</p>
-                <p class="card-text">Origin: {{character.origin.name}}</p>
-                <p class="card-text">Location: {{character.location.name}}</p>
-            </div>
+<div class="container-fluid">
+  <div class="row justify-content-center justify-content-md-start mt-4">
+    <!-- Card de Character -->
+    <div class="col-12 col-md-4 col-lg-3 mb-4">
+      <div class="card character-card mx-auto" style="max-width: 18rem;">
+        <img src="{{character.image}}" class="card-img-top" alt="Character Image">
+        <div class="card-body">
+          <h5 class="card-title">Character Info</h5>
+          <p class="card-text">Name: {{character.name}}</p>
+          <p
+            class="card-text"
+            [ngClass]="{
+              'aliveColor': character.status == 'Alive',
+              'deadColor': character.status == 'Dead',
+              'unknownColor': character.status == 'unknown'
+            }"
+          >
+            Status: {{character.status | translate: 'status'}}
+          </p>
+          <p class="card-text">Species: {{character.species}}</p>
+          <p class="card-text">Gender: {{character.gender | translate: 'gender'}}</p>
+          <p class="card-text">Origin: {{character.origin.name}}</p>
+          <p class="card-text">Location: {{character.location.name}}</p>
         </div>
+      </div>
     </div>
-    <div class="col-md-8">
-        <div class="episode-list">
-            <h5 class="episode-title">List of Episodes Appearances</h5>
-            <ul class="episode-items">
-                <li *ngFor="let episode of character.episode">
-                    {{episode}}
-                </li>
-            </ul>
-        </div>
+    <!-- Lista de Episodios -->
+    <div class="col-12 col-md-8">
+      <div class="episode-list">
+        <h5 class="episode-title">List of Episodes Appearances</h5>
+        <ul class="episode-items">
+          <li *ngFor="let episode of episodes">
+            {{episode.episode}} - {{episode.name}}
+          </li>
+        </ul>
+      </div>
     </div>
+  </div>
 </div>
+
