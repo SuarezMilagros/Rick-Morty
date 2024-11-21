@@ -1,0 +1,33 @@
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+  <div class="row w-100 justify-content-center align-items-center">
+    <!-- Imagen del lado izquierdo en web y encima en mobile -->
+    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center mb-4 mb-md-0">
+      <img src="assets/rickandmorty.png" alt="Rick & Morty Logo" class="img-fluid" style="max-height: 400px; max-width: 100%;" />
+    </div>
+
+    <!-- Formulario del lado derecho en web y debajo en mobile -->
+    <div class="col-12 col-md-6 d-flex justify-content-center">
+      <div class="bg rounded shadow p-4" style="max-width: 400px; width: 100%;">
+        
+          <div class="mb-3">
+            <label for="email" class="form-label text-primary">Email address</label>
+            <input type="email" class="form-control custom-input" id="email" [(ngModel)]="mail" placeholder="name@example.com" required />
+          </div>
+          <div class="mb-3">
+            <label for="password" class="form-label text-primary">Password</label>
+            <input type="password" class="form-control custom-input" id="password" [(ngModel)]="password" placeholder="Password" required />
+          </div>
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe" />
+            <label class="form-check-label" for="rememberMe">Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100" (click)="signIn()">Sign In</button>
+          <div class="mb-3 mt-3">
+            <a href="#">New around here? Sign up</a><br />
+            <a href="#">Forgot password?</a>
+          </div>
+       
+      </div>
+    </div>
+  </div>
+</div>

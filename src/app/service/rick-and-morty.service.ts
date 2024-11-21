@@ -26,5 +26,15 @@ export class RickAndMortyService {
   getEpisodeData(url: string): Observable<any> {
     return this.http.get<any>(url);
   }
-  
+  /*
+  saveUser(user:User):Observable<any>{
+    return this.http.post(this.url,user);
+  }
+*/
 }
+/*
+interface User{
+  name: String,
+  dni: String
+}
+*/

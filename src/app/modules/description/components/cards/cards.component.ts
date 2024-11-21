@@ -3,11 +3,11 @@ import { ActivatedRoute } from '@angular/router';
 import { RickAndMortyService } from 'src/app/service/rick-and-morty.service';
 
 @Component({
-  selector: 'app-description',
-  templateUrl: './description.component.html',
-  styleUrls: ['./description.component.css']
+  selector: 'app-cards',
+  templateUrl: './cards.component.html',
+  styleUrls: ['./cards.component.css']
 })
-export class DescriptionComponent implements OnInit {
+export class CardsComponent implements OnInit {
   character: any;
   id: string = '';
   episodes: Array<{episode: string, name: string}> = [];
@@ -33,14 +33,5 @@ export class DescriptionComponent implements OnInit {
     }
   }
 }
-
-
-
-
-
-
-
-
-  
 
 
