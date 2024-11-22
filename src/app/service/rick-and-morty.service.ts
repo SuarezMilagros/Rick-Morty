@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 
@@ -26,15 +26,13 @@ export class RickAndMortyService {
   getEpisodeData(url: string): Observable<any> {
     return this.http.get<any>(url);
   }
-  /*
-  saveUser(user:User):Observable<any>{
-    return this.http.post(this.url,user);
+
+  // Método para buscar personajes por nombre
+  searchCharacters(query: string): Observable<any> {
+    const params = new HttpParams().set('name', query); // Usamos 'name' para buscar personajes por nombre
+    console.log(params)
+    return this.http.get<any>(this.url, { params });
   }
-*/
+
+
 }
-/*
-interface User{
-  name: String,
-  dni: String
-}
-*/
