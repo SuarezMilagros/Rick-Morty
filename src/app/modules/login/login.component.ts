@@ -52,16 +52,15 @@ export class LoginComponent implements OnInit {
       }
     );
   }
-
-  onRegister() {
-    this.router.navigate(['/register']);
-  }
-
   get mail() {
     return this.loginForm.get('mail');
   }
 
   get password() {
     return this.loginForm.get('password');
+  }
+
+  onRegister() {
+    this.router.navigate(['/register']);
   }
 }

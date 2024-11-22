@@ -15,14 +15,14 @@ const routes: Routes = [
       import('./modules/home/home.module').then((m) => m.HomeModule), canActivate: [AuthGuard],
   },
   {
-    path: 'description',
+    path: 'description/:id',
     loadChildren: () =>
       import('./modules/description/description.module').then((m) => m.DescriptionModule), canActivate: [AuthGuard],
   },
   
   { path: 'register', 
   loadChildren: () => 
-  import('./modules/register/register.module').then(m => m.RegisterModule),canActivate: [AuthGuard], 
+  import('./modules/register/register.module').then(m => m.RegisterModule), 
   },
   
   { path: '**', redirectTo: 'login' }, 

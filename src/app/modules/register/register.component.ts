@@ -13,11 +13,7 @@ export class RegisterComponent implements OnInit {
   errorMessages: { [key: string]: string } = {};
   birthday: any;
 
-  constructor(
-    private formBuilder: FormBuilder,
-    private service: AuthService,
-    private router: Router
-  ) {
+  constructor(private formBuilder: FormBuilder,private service: AuthService,private router: Router) {
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
       mail: ['', [Validators.required, Validators.email]],
@@ -41,7 +37,7 @@ export class RegisterComponent implements OnInit {
 
   setErrorMessages() {
     const controls = this.registerForm.controls;
-    this.errorMessages = {}; // Reset messages
+    this.errorMessages = {}; 
 
     if (controls['name'].hasError('required')) {
       this.errorMessages['name'] = 'El nombre es obligatorio.';
@@ -113,7 +109,7 @@ export class RegisterComponent implements OnInit {
     
       );
     } else {
-      this.setErrorMessages(); // Set error messages if form is invalid
+      this.setErrorMessages(); 
     }
   }
 }

@@ -18,7 +18,7 @@ export class CharacterComponent implements OnInit {
     this.route.params.subscribe(params => {
       this.id = params['id'];
     });
-
+    console.log(this.id)
     const data = await this.service.uniqueCharacter(this.id).toPromise();
     this.character = data;
     
