@@ -54,7 +54,7 @@ export class RegisterComponent implements OnInit {
     if (controls['password'].hasError('required')) {
       this.errorMessages['password'] = 'La contraseña es obligatoria.';
     } else if (controls['password'].hasError('minlength')) {
-      this.errorMessages['password'] = 'La contraseña debe tener al menos 6 caracteres.';
+      this.errorMessages['password'] = 'La contraseña debe tener al menos 8 caracteres.';
     }
 
     if (controls['repeatPassword'].hasError('required')) {
