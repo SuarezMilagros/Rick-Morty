@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from 'src/app/service/auth.service';
 import { Login } from "src/app/models/login.model"
 import { ConstantPool } from '@angular/compiler';
@@ -13,29 +13,31 @@ export class LoginComponent {
   mail: string = '';
   password: string = ''
   private login: Login | undefined;
+
   constructor(private service: AuthService,private router: Router) {}
 
-
   signIn(){
-    this.login = {mail: this.mail, password: this.password}
+   this.login = {mail: this.mail, password: this.password}
     const response = this.service.login(this.login).subscribe(
       (response) => {
+        sessionStorage.setItem('name', response.data.user.name);
         this.router.navigate(['/home']);
+        
       },
       (error) => {
         if (error.status === 400) {
           
           if(error.error.header.resultCode===3){
             alert("User not found")
-    }
+          }
 
           if(error.error.header.resultCode===4){
             alert("Invalid password")
-    }
+          }
 
           if(error.error.header.resultCode===2){
             alert("is not allowed to be empty")
-    }
+          }
         } else {
           console.error('Error inesperado:', error);
         }

@@ -7,21 +7,20 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () =>
-      import('./modules/login/login.module').then((m) => m.LoginModule), 
+      import('./modules/login/login.module').then((m) => m.LoginModule),  
   },
   {
     path: 'home',
     loadChildren: () =>
-      import('./modules/home/home.module').then((m) => m.HomeModule),
+      import('./modules/home/home.module').then((m) => m.HomeModule), canActivate: [AuthGuard]
   },
   {
     path: 'description',
     loadChildren: () =>
       import('./modules/description/description.module').then(
-        (m) => m.DescriptionModule
-      ),
+        (m) => m.DescriptionModule), canActivate: [AuthGuard]
   },
-  { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule) },
+  { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule), canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' }, 
 ];
 

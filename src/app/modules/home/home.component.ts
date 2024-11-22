@@ -9,10 +9,13 @@ import { RickAndMortyService } from 'src/app/service/rick-and-morty.service';
 export class HomeComponent implements OnInit {
   characters: any[] = [];
   currentPage: number = 1;
+  isLoggedIn: boolean = true
+
 
   constructor(private service: RickAndMortyService) {}
 
   ngOnInit() {
+  
     this.loadCharacters(this.currentPage); // Carga inicial
   }
 
