@@ -10,7 +10,7 @@ import { Register } from '../models/register.model';
 })
 export class AuthService {
 
-  private url = 'https://api-auth.academy.mobydigital.com/api/user'
+  private url = 'http://api-auth.academy.mobydigital.com/api/user'
   isAuthenticated: any;
 
   constructor(private http: HttpClient, private router: Router, ) { }
