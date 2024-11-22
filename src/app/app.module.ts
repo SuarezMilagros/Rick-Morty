@@ -28,7 +28,8 @@ import { TranslatePipe } from './pipes/translate.pipe';
     DescriptionComponent,
     View404Component,
     CardsComponent,
-    TranslatePipe
+    TranslatePipe,
+    
     
   ],
   imports: [
