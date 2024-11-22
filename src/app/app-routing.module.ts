@@ -12,14 +12,19 @@ const routes: Routes = [
   {
     path: 'home',
     loadChildren: () =>
-      import('./modules/home/home.module').then((m) => m.HomeModule), canActivate: [AuthGuard]
+      import('./modules/home/home.module').then((m) => m.HomeModule), canActivate: [AuthGuard],
   },
   {
     path: 'description',
     loadChildren: () =>
-      import('./modules/description/description.module').then((m) => m.DescriptionModule), canActivate: [AuthGuard]
+      import('./modules/description/description.module').then((m) => m.DescriptionModule), canActivate: [AuthGuard],
   },
-  { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule), canActivate: [AuthGuard] },
+  
+  { path: 'register', 
+  loadChildren: () => 
+  import('./modules/register/register.module').then(m => m.RegisterModule),canActivate: [AuthGuard], 
+  },
+  
   { path: '**', redirectTo: 'login' }, 
 ];
 

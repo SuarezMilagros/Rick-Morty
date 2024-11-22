@@ -7,13 +7,13 @@ import { HomeComponent } from './modules/home/home.component'
 import { HttpClientModule } from '@angular/common/http';
 import { SearchComponent } from './modules/home/components/search/search.component';
 import { CardComponent } from './modules/home/components/card/card.component';
-import { PaginationComponent } from './modules/description/components/pagination/pagination.component';
+import { PaginationComponent } from './modules/home/components/pagination/pagination.component';
 import { MatPaginatorModule } from '@angular/material/paginator';
-import { DescriptionComponent } from './modules/description/description.component';
+
 import { View404Component } from './view404/view404.component';
 import { SharedModule } from './shared/shared.module';
-import { CardsComponent } from './modules/description/components/cards/cards.component';
-import { TranslatePipe } from './pipes/translate.pipe';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 
 
@@ -25,12 +25,8 @@ import { TranslatePipe } from './pipes/translate.pipe';
     SearchComponent,
     CardComponent,
     PaginationComponent,
-    DescriptionComponent,
     View404Component,
-    CardsComponent,
-    TranslatePipe,
-    
-    
+  
   ],
   imports: [
     BrowserModule,
@@ -38,6 +34,10 @@ import { TranslatePipe } from './pipes/translate.pipe';
     HttpClientModule,
     MatPaginatorModule,
     SharedModule,
+    ReactiveFormsModule,
+    FormsModule,
+    SharedModule
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
