@@ -17,8 +17,7 @@ const routes: Routes = [
   {
     path: 'description',
     loadChildren: () =>
-      import('./modules/description/description.module').then(
-        (m) => m.DescriptionModule), canActivate: [AuthGuard]
+      import('./modules/description/description.module').then((m) => m.DescriptionModule), canActivate: [AuthGuard]
   },
   { path: 'register', loadChildren: () => import('./modules/register/register.module').then(m => m.RegisterModule), canActivate: [AuthGuard] },
   { path: '**', redirectTo: 'login' }, 
