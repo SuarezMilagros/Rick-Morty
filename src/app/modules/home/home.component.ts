@@ -1,4 +1,3 @@
-
 import { Component, OnInit } from '@angular/core';
 import { RickAndMortyService } from 'src/app/service/rick-and-morty.service';
 
