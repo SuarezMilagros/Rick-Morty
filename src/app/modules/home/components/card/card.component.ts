@@ -10,10 +10,11 @@ export class CardComponent implements OnInit {
 
   @Input() items: any[] = [];
 
+
   constructor(private router: Router) {}
 
   ngOnInit(): void {}
-  
+
   goToDescription(id:string) {
     this.router.navigate(['/description',id]);
   }

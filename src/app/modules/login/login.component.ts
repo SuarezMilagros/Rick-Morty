@@ -38,7 +38,7 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/home']);
       },
       (error) => {
-        if (error.status === 400) {
+        if (error.status != 400) {
           if (error.error.header.resultCode === 3) {
             alert("User not found");
           } else if (error.error.header.resultCode === 4) {

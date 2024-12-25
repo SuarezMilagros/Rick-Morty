@@ -1,28 +1,16 @@
-<form class="d-flex" role="search" (ngSubmit)="onSearch()">
-    <input 
-      class="form-control me-2 custom-search-input" 
-      type="search" 
-      placeholder="Search..." 
-      aria-label="Buscar" 
-      [(ngModel)]="searchQuery" 
-      name="searchQuery" 
-      required
-    />
-    <button class="btn btn-outline-primary" type="submit">Search</button>
-  </form>
-  
-  <!-- Mostrar resultados de la búsqueda -->
-  <div *ngIf="characters.length > 0">
-    <ul>
-      <li *ngFor="let character of characters">
-        <h5>{{ character.name }}</h5>
-        <img [src]="character.image" alt="{{ character.name }}" />
-      </li>
-    </ul>
-  </div>
-  
-  <!-- Mensaje si no hay resultados -->
-  <div *ngIf="characters.length === 0 && searchQuery">
-    <p>No se encontraron personajes con el nombre "{{ searchQuery }}"</p>
-  </div>
+  <form class="d-flex" role="search">
+      <input 
+        class="form-control me-2 custom-search-input" 
+        type="search" 
+        placeholder="Search..." 
+        aria-label="Buscar" 
+        [(ngModel)]="searchQuery" 
+        name="searchQuery" 
+        (input)="onSearch()"
+        required
+      />
+      <button class="btn btn-outline-primary" type="submit" >Search</button>
+    </form>
+    
+
   

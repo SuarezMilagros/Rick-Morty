@@ -19,11 +19,8 @@ export class RegisterComponent implements OnInit {
       mail: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPassword: ['', [Validators.required]],
-      address: [''],
-      city: ['', Validators.required],
-      state: ['', Validators.required],
-      zip: ['', [Validators.required, Validators.pattern('^[0-9]{4,5}$')]]
     }, { validator: this.passwordMatchValidator });
+
   }
 
   ngOnInit(): void {
@@ -67,49 +64,77 @@ export class RegisterComponent implements OnInit {
   signUp() {
     if (this.registerForm.valid) {
       const formValues = this.registerForm.value;
-      const address = {
-        street: formValues.address,
-        city: formValues.city,
-        location: '-',
-        country: formValues.state,
-        cp: formValues.zip
-      };
-
-      const registerData = {
-        name: formValues.name,
-        mail: formValues.mail,
-        password: formValues.password,
-        address: address,
-        birthday: this.birthday,
-        phone: '3865571470'
-      };
-
-      this.service.register(registerData).subscribe(
-        (response) => {
-          // Guardar información en sessionStorage
-          sessionStorage.setItem('userMail', response.data.user.mail);
-          sessionStorage.setItem('userName', response.data.user.name);
-          sessionStorage.setItem('userAddress', JSON.stringify(response.data.user.address));
-          
-          // Navegar a la página de login
-          this.router.navigate(['/login']);
-        },
-        (error) => {
-          if (error.status != 200) {
-            
-            if(error.error.header.resultCode===1){
-              alert("Mail already registered")
-            }
-    
-            if(error.error.header.resultCode===2){
-              alert("is not allowed to be empty")
-             }
-          }
-        }
-    
-      );
+  
+      const address = this.createAddress(formValues);
+      const registerData = this.createRegisterData(formValues, address);
+  
+      this.registerUser(registerData);
     } else {
-      this.setErrorMessages(); 
+      this.setErrorMessages();
     }
   }
+  
+  // Método para crear la dirección
+  private createAddress(formValues: any): any {
+    return {
+      street: formValues.address,
+      city: formValues.city,
+      location: '-',
+      country: formValues.state,
+      cp: formValues.zip
+    };
+  }
+  
+  // Método para crear los datos de registro
+  private createRegisterData(formValues: any, address: any): any {
+    return {
+      name: formValues.name,
+      mail: formValues.mail,
+      password: formValues.password,
+      address: address,
+      birthday: this.birthday,
+      phone: '3865571470' 
+    };
+  }
+  
+  // Método para registrar al usuario
+  private registerUser(registerData: any): void {
+    this.service.register(registerData).subscribe(
+      (response) => {
+        this.handleSuccessResponse(response);
+      },
+      (error) => {
+        this.handleErrorResponse(error);
+      }
+    );
+  }
+  
+  // Manejo de la respuesta exitosa
+  private handleSuccessResponse(response: any): void {
+    sessionStorage.setItem('userMail', response.data.user.mail);
+    sessionStorage.setItem('userName', response.data.user.name);
+    sessionStorage.setItem('userAddress', JSON.stringify(response.data.user.address));
+  
+    this.router.navigate(['/login']);
+  }
+  
+  // Manejo de errores
+  private handleErrorResponse(error: any): void {
+    if (error.status !== 200) {
+      const resultCode = error.error.header.resultCode;
+  
+      switch (resultCode) {
+        case 1:
+          alert("Mail already registered");
+          break;
+        case 2:
+          alert("Field is not allowed to be empty");
+          break;
+        default:
+          alert("An unexpected error occurred");
+      }
+    }
+  }
+  
+  
 }

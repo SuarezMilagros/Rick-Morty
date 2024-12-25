@@ -34,5 +34,7 @@ export class RickAndMortyService {
     return this.http.get<any>(this.url, { params });
   }
 
+  
+
 
 }
