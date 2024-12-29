@@ -1,0 +1,14 @@
+.page-link {
+    cursor: pointer;
+  }
+
+  .page-link {
+    background-color: #1E1E1E; 
+    color: #007bff; 
+    border: none;
+  }
+  
+  .page-link:hover {
+    background-color: #424242; /* Color de fondo al pasar el mouse */
+  }
+  

@@ -1,0 +1,13 @@
+<app-header [isLoggedIn]="isLoggedIn"></app-header>
+<div class="mt-4 ms-4 me-4">
+    <app-navbar></app-navbar>>
+</div>
+<div class="mt-4 ms-4 me-4">
+    <app-search (characterSearch)="receivedCharacter($event)"></app-search>
+</div>
+<div class="mt-4 ms-4 me-4">
+    <app-card [items]="characters"></app-card>
+</div>
+<div class="mt-4 ms-4 me-4 d-flex justify-content-center">
+    <app-pagination (pageChange)="onPageChange($event)"></app-pagination>
+</div>

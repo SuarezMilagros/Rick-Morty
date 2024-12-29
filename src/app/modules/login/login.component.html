@@ -1,0 +1,44 @@
+<app-header></app-header>
+<div class="container-fluid d-flex justify-content-center align-items-center vh-100">
+  <div class="row w-100 justify-content-center align-items-center">
+    <div class="col-12 col-md-6 d-flex justify-content-center align-items-center mb-4 mb-md-0">
+      <img src="assets/rickandmorty.png" alt="Rick & Morty Logo" class="img-fluid" style="max-height: 400px; max-width: 100%;" />
+    </div>
+
+    <div class="col-12 col-md-6 d-flex justify-content-center">
+      <div class="bg rounded shadow p-4" style="max-width: 400px; width: 100%;">
+        
+        <form [formGroup]="loginForm" (ngSubmit)="signIn()">
+          <div class="mb-3">
+            <label for="email" class="form-label text-primary">Email address</label>
+            <input type="email" formControlName="email" class="form-control custom-input" id="email" placeholder="name@example.com" />
+            <div *ngIf="mail?.touched && mail?.invalid" class="text-danger">
+              <small *ngIf="mail?.errors?.['required']">Email is required.</small>
+              <small *ngIf="mail?.errors?.['email']">Please enter a valid email.</small>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <label for="password" class="form-label text-primary">Password</label>
+            <input type="password" formControlName="password" class="form-control custom-input" id="password" placeholder="Password" />
+            <div *ngIf="password?.touched && password?.invalid" class="text-danger">
+              <small *ngIf="password?.errors?.['required']">Password is required.</small>
+              <small *ngIf="password?.errors?.['minlength']">Password must be at least 6 characters long.</small>
+            </div>
+          </div>
+
+          <div class="mb-3 form-check">
+            <input type="checkbox" class="form-check-input" id="rememberMe" />
+            <label class="form-check-label text-light" for="rememberMe">Remember me</label>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Sign In</button>
+
+          <div class="mb-3 mt-3">
+            <a routerLink="/register" (click)="onRegister()">New around here? Sign up</a><br />
+            <a href="#">Forgot password?</a>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
