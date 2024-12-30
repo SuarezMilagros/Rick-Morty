@@ -1,0 +1,40 @@
+<app-header></app-header>
+<div class="mt-4 ms-4 me-4">
+    <app-navbar></app-navbar>>
+</div>
+<div class="container py-4">
+    <div class="row"  >
+      <div
+        class="col-lg-4 col-md-6 mb-4"
+        *ngFor="let episode of filteredEpisodes"
+      >
+      <div class="episode-card" (click)="openDetails(episode.id)">
+        <h3>{{ episode.name }}</h3>
+        <p><strong>Air Date:</strong> {{ episode.air_date }}</p>
+        <button (click)="toggleFavorite(episode)">
+          {{ episode.isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
+        </button>
+      </div>
+      
+      </div>
+    </div>
+  
+    <nav *ngIf="info.pages > 1" aria-label="Pagination">
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="!info.prev">
+          <button class="page-link" (click)="changePage('prev')">Previous</button>
+        </li>
+        <li
+          class="page-item"
+          [class.active]="currentPage === page"
+          *ngFor="let page of pages"
+        >
+          <button class="page-link" (click)="changePage(page)">{{ page }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="!info.next">
+          <button class="page-link" (click)="changePage('next')">Next</button>
+        </li>
+      </ul>
+    </nav>
+  </div>
+  

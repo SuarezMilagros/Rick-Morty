@@ -17,6 +17,14 @@ export class AuthService {
   register(data: any): Observable<any> {
     return this.http.post(`${this.apiUrl}/register`, data);
   }
-}
+  
+  profile(id: number): Observable<any> {
+    return this.http.get(`${this.apiUrl}/profile/${id}`)
+  }
+  
+
+
+  }
+
 
 

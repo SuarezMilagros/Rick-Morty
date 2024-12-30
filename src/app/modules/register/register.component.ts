@@ -2,8 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/service/auth.service';
-import { SharedModule } from "../../shared/shared.module";
-import { HeaderComponent } from "../../shared/components/header/header.component";
+
 
 @Component({
   selector: 'app-register',
@@ -19,9 +18,13 @@ export class RegisterComponent implements OnInit {
   constructor(private formBuilder: FormBuilder,private service: AuthService,private router: Router) {
     this.registerForm = this.formBuilder.group({
       name: ['', [Validators.required, Validators.minLength(3)]],
-      mail: ['', [Validators.required, Validators.email]],
+      nickname:[],
+      email: ['', [Validators.required, Validators.email]],
+      birthday: [],
       password: ['', [Validators.required, Validators.minLength(6)]],
       repeatPassword: ['', [Validators.required]],
+      address: []
+    
     }, { validator: this.passwordMatchValidator });
 
   }
@@ -67,10 +70,12 @@ export class RegisterComponent implements OnInit {
   signUp() {
     if (this.registerForm.valid) {
       const formValues = this.registerForm.value;
+      console.log(formValues)
   
       this.service.register(formValues).subscribe(
         (response) => {
           alert('Registro exitoso. Ahora puedes iniciar sesión.');
+          console.log(response)
           this.router.navigate(['/login']);
         },
         (error) => {
@@ -143,6 +148,4 @@ export class RegisterComponent implements OnInit {
       }
     }
   }
-  
-  
 }

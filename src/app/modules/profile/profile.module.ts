@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ProfileComponent } from './profile.component';
 import { ProfileRoutingModule } from './profile-routing.module';
+import { SharedModule } from "../../shared/shared.module";
 
 
 
@@ -14,8 +15,9 @@ import { ProfileRoutingModule } from './profile-routing.module';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    ProfileRoutingModule
-  ]
+    ProfileRoutingModule,
+    SharedModule
+]
 
 })
 export class ProfileModule { }

@@ -1,5 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output, Type } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AuthService } from 'src/app/service/auth.service';
+import { RegisterComponent } from '../register/register.component';
+import { Register } from 'src/app/models/register.model';
 
 @Component({
   selector: 'app-profile',
@@ -7,11 +10,14 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-  userProfile: any = {}; 
+  userProfile: any = {} ; 
   profileForm: FormGroup;
   defaultProfileImage = 'assets/default-profile.png'; 
 
-  constructor(private fb: FormBuilder) {
+
+
+
+  constructor(private fb: FormBuilder, private authservice: AuthService) {
     this.profileForm = this.fb.group({
       nickname: ['', Validators.required],
       profilePicture: [''],
@@ -20,12 +26,11 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    // Simulación: cargar datos del usuario con servicio que cree)
-    
-
+    this.profile()
   }
 
   saveProfile(): void {
+    
     if (this.profileForm.valid) {
       const updatedProfile = {
         ...this.userProfile,
@@ -35,6 +40,22 @@ export class ProfileComponent implements OnInit {
       };
       localStorage.setItem('user', JSON.stringify(updatedProfile));
       this.userProfile = updatedProfile;
+      
     }
+
   }
+
+  profile(){ 
+    const id = Number(sessionStorage.getItem("idUser") ?? 1);
+    this.authservice.profile(id).subscribe(
+      (response) => {
+        console.log(response)
+        this.userProfile = response;
+        console.log(this.userProfile)
+
+      },
+  )}
+
 }
+
+

@@ -18,7 +18,7 @@ export class LoginComponent implements OnInit {
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(8)]],
+      password: ['', [Validators.required, Validators.minLength(6)]],
     });
   }
 
@@ -36,7 +36,8 @@ export class LoginComponent implements OnInit {
       (response) => {
         console.log(response)
         //sessionStorage.setItem('token', response.token); // Guardar el token
-        //sessionStorage.setItem('user', JSON.stringify(response.user));
+        sessionStorage.setItem('name', JSON.stringify(response.userName));
+        sessionStorage.setItem("idUser", JSON.stringify(response.user));
         sessionStorage.setItem('isAuthenticated', 'true');
         this.router.navigate(['/home']);
       },

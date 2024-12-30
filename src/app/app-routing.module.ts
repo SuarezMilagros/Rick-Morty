@@ -24,6 +24,19 @@ const routes: Routes = [
   loadChildren: () => 
   import('./modules/register/register.module').then(m => m.RegisterModule), 
   },
+
+  { path: 'profile', 
+  loadChildren: () => 
+  import('./modules/profile/profile.module').then(m => m.ProfileModule), 
+  },
+  
+  { path: 'episodes', loadChildren: () => 
+  import('./modules/episodes/episodes.module').then(m => m.EpisodesModule)
+  },
+
+  { path: 'details/:id', loadChildren: () => 
+  import('./modules/details/details.module').then(m => m.DetailsModule) 
+  },
   
   { path: '**', redirectTo: 'login' }, 
 ];

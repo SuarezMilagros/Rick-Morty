@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root'
 })
 export class RickAndMortyService {
-  private url = 'https://rickandmortyapi.com/api/character'
+  private url = 'https://rickandmortyapi.com/api/character';
 
   constructor(private http: HttpClient) { }
 
@@ -33,8 +33,14 @@ export class RickAndMortyService {
     console.log(params)
     return this.http.get<any>(this.url, { params });
   }
-
   
+  getEpisodes(page: number): Observable<any> {
+    return this.http.get<any>(`https://rickandmortyapi.com/api/episode?page=${page}`);
+  }
 
-
+  getEpisodeById(id: number): Observable<any> {
+    return this.http.get(`https://rickandmortyapi.com/api/episode/${id}`);
+  }
+  
+  
 }

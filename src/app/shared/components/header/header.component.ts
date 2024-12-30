@@ -1,4 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 declare var bootstrap: any;
 
@@ -10,6 +11,8 @@ declare var bootstrap: any;
 export class HeaderComponent implements OnInit {
   name: string = '';
   @Input() isLoggedIn: boolean = false;
+
+  constructor(private router: Router){}
 
   ngOnInit(): void {
     this.name = sessionStorage.getItem('name') || "";
@@ -35,4 +38,14 @@ export class HeaderComponent implements OnInit {
     this.isLoggedIn = false;
     window.location.href = '/login'; // Redirige al usuario a la página de login
   }
+
+  openProfile(){
+    this.router.navigate(['/profile']);
+  }
+
+  openEpisode(){
+    this.router.navigate(['/episodes']);
+  }
+
+
 }
