@@ -26,11 +26,16 @@ export class ProfileComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.profile()
+    const storedUser = localStorage.getItem('user');
+    if (storedUser) {
+      this.userProfile = JSON.parse(storedUser);
+      this.profileForm.patchValue(this.userProfile);
+    } else {
+      this.profile();
+    }
   }
 
   saveProfile(): void {
-    
     if (this.profileForm.valid) {
       const updatedProfile = {
         ...this.userProfile,
@@ -40,21 +45,24 @@ export class ProfileComponent implements OnInit {
       };
       localStorage.setItem('user', JSON.stringify(updatedProfile));
       this.userProfile = updatedProfile;
-      
     }
-
   }
+  
 
-  profile(){ 
+  profile(): void { 
     const id = Number(sessionStorage.getItem("idUser") ?? 1);
     this.authservice.profile(id).subscribe(
       (response) => {
-        console.log(response)
         this.userProfile = response;
-        console.log(this.userProfile)
-
+        this.profileForm.patchValue(this.userProfile); 
+        localStorage.setItem('user', JSON.stringify(this.userProfile));
       },
-  )}
+      (error) => {
+        console.error('Error fetching profile:', error);
+      }
+    );
+  }
+  
 
 }
 

@@ -3,59 +3,70 @@
    <app-navbar></app-navbar>
 </div>
 <div class="container mt-4">
-    <div class="row">
-      <div class="col-md-4 text-center">
-        <img 
-          [src]="userProfile.profilePicture || defaultProfileImage" 
-          alt="Profile Picture" 
-          class="img-fluid rounded-circle mb-3" 
-          style="max-width: 150px;"
-        />
-        <h5>{{ userProfile.name }}</h5>
-        <p class="text-muted text-light">{{ userProfile.nickname }}</p>
-        <p>{{ userProfile.email }}</p>
-        <p>{{ userProfile.birthday | date }}</p>
-        <p>{{ userProfile.address }}</p>
+  <div class="row justify-content-center">
+    <!-- User Profile Card -->
+    <div class="col-12 col-md-4">
+      <div class="card text-center bg-dark text-light ">
+        <div class="card-body">
+          <img 
+            [src]="userProfile.profilePicture || defaultProfileImage" 
+            alt="Profile Picture" 
+            class="rounded-circle img-thumbnail mb-3" 
+            style="width: 120px; height: 120px;"
+          />
+          <h5>{{ userProfile.name }}</h5>
+          <p class="text-muted">{{ userProfile.nickname }}</p>
+          <p>{{ userProfile.email }}</p>
+          <p>{{ userProfile.birthday | date }}</p>
+          <p>{{ userProfile.address }}</p>
+        </div>
       </div>
-  
-      <div class="col-md-8">
-        <h4>Edit Profile</h4>
-        <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
-          <div class="form-group mb-3">
-            <label for="nickname">Nickname</label>
-            <input 
-              type="text" 
-              id="nickname" 
-              formControlName="nickname" 
-              class="form-control" 
-              placeholder="Enter your nickname"
-            />
-          </div>
-  
-          <div class="form-group mb-3">
-            <label for="profilePicture">Profile Picture URL</label>
-            <input 
-              type="text" 
-              id="profilePicture" 
-              formControlName="profilePicture" 
-              class="form-control" 
-              placeholder="Paste image URL here"
-            />
-          </div>
-  
-          <div class="form-group mb-3">
-            <label for="location">Location</label>
-            <input 
-              type="text" 
-              id="location" 
-              formControlName="location" 
-              class="form-control" 
-              placeholder="Enter your location"
-            />
-          </div>
-          <button type="submit" class="btn btn-primary" [disabled]="profileForm.invalid">Save Changes</button>
-        </form>
+    </div>
+
+    
+
+    <!-- Edit Profile Form -->
+    <div class="col-12 col-md-8">
+      <div class="card bg-dark text-light ">
+        <div class="card-body">
+          <h4 class="card-title border-bottom pb-2 mb-4">Edit Profile</h4>
+          <form [formGroup]="profileForm" (ngSubmit)="saveProfile()">
+            <div class="mb-3">
+              <label for="nickname" class="form-label">Nickname</label>
+              <input 
+                type="text" 
+                id="nickname" 
+                formControlName="nickname" 
+                class="form-control" 
+                placeholder="Enter your nickname"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="profilePicture" class="form-label">Profile Picture URL</label>
+              <input 
+                type="text" 
+                id="profilePicture" 
+                formControlName="profilePicture" 
+                class="form-control" 
+                placeholder="Paste image URL here"
+              />
+            </div>
+
+            <div class="mb-3">
+              <label for="location" class="form-label">Location</label>
+              <input 
+                type="text" 
+                id="location" 
+                formControlName="location" 
+                class="form-control" 
+                placeholder="Enter your location"
+              />
+            </div>
+            <button type="submit" class="btn btn-primary w-100" [disabled]="profileForm.invalid">Save Changes</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
-  
+</div>

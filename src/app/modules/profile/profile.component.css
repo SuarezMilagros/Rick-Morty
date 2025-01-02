@@ -1,11 +1,12 @@
-.container {
-    background: #2c2c2c;
-    color: #f0f0f0;
-    padding: 20px;
-    border-radius: 10px;
-  }
-  
-  img {
-    border: 2px solid #6c63ff;
-  }
-  
+body {
+  background-color: #141414;
+  color: #f2f2f2;
+}
+
+img.rounded-circle {
+  object-fit: cover;
+}
+
+.card-title {
+  border-color: #444;
+}

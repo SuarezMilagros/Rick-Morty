@@ -1,26 +1,85 @@
-.breadcrumb {
-    background: transparent;
-  }
-  
-  .card {
-    border-radius: 8px;
-    transition: transform 0.2s ease-in-out;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px);
-  }
-  
-  .search-bar .form-control {
-    border-radius: 0;
-  }
-  
-  .pagination .page-link {
-    color: #6c63ff;
-  }
-  
-  .pagination .page-link:hover {
-    background-color: #6c63ff;
-    color: #fff;
-  }
-  
+.episode-card {
+  background-color: #33373D; /* Fondo de la tarjeta */
+  color: #FFFFFF; /* Color del texto */
+  border-radius: 8px; /* Bordes redondeados */
+  padding: 16px; /* Espaciado interno */
+  margin: 8px; /* Espaciado entre tarjetas */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  transition: transform 0.2s ease, box-shadow 0.2s ease; /* Animación de hover */
+}
+
+.episode-card:hover {
+  transform: translateY(-4px); /* Efecto de levitación */
+  box-shadow: 0 6px 10px rgba(0, 0, 0, 0.2); /* Sombra más intensa */
+}
+
+.episode-card h3 {
+  margin-top: 0; /* Sin margen superior */
+  font-size: 1.25rem; /* Tamaño del título */
+  color: #FFFFFF; /* Color del título */
+}
+
+.episode-card p {
+  margin: 8px 0; /* Margen entre párrafos */
+  font-size: 0.875rem; /* Tamaño del texto */
+  color: #B0B0B0; /* Color del texto de los detalles */
+}
+
+.episode-card button {
+  margin-top: 12px; /* Espaciado superior */
+  background-color: #6C63FF; /* Color del botón */
+  color: #FFFFFF; /* Color del texto del botón */
+  border: none; /* Sin borde */
+  border-radius: 4px; /* Bordes redondeados */
+  padding: 8px 12px; /* Espaciado interno */
+  cursor: pointer; /* Manito al pasar */
+}
+
+.episode-card button:hover {
+  background-color: #5A54E5; /* Color más oscuro al hacer hover */
+}
+
+.pagination .page-link {
+  color: #6c757d;
+}
+
+.pagination .page-link:hover {
+  color: #ffffff;
+  background-color: #6c757d;
+}
+
+.pagination .page-item.active .page-link {
+  background-color: #6c757d;
+  border-color: #6c757d;
+  color: #ffffff;
+}
+
+input.form-control {
+  background-color: #2c2c2c;
+  color: #f0f0f0;
+  border: 1px solid #6c757d;
+}
+
+input.form-control::placeholder {
+  color: #999;
+}
+
+button.btn-primary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+button.btn-primary:hover {
+  background-color: #5a6268;
+}
+
+.custom-search-input {
+  background-color: #1E1E1E;
+  color: white;  
+  border: 1px solid #444;  
+}
+
+.custom-search-input::placeholder {
+  color: #aaa; 
+}
+

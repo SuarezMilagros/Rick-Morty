@@ -1,6 +1,70 @@
 .profile-picture {
     width: 50px;
     height: 50px;
-    border-radius: 50%;
+  
+  }
+  
+  body {
+    background-color: #141414;
+    color: #f2f2f2;
+    font-family: Arial, sans-serif;
+  }
+  
+  
+  .card {
+    background-color: #1c1c1c;
+    border: 1px solid #333;
+    border-radius: 8px;
+  }
+  
+  .episode-info p {
+    margin: 0;
+    line-height: 1.5;
+  }
+  
+  .episode-characters .list-unstyled {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .character-link {
+    color: #ffffff;
+    text-decoration: none;
+  }
+  
+  .character-link:hover {
+    text-decoration: underline;
+  }
+  
+  .btn-primary {
+    background-color: #6c63ff;
+    border-color: #6c63ff;
+  }
+  
+  .btn-primary:hover {
+    background-color: #5a54e0;
+    border-color: #5a54e0;
+  }
+  
+  .container-fluid {
+    padding: 0 2rem;
+  }
+  
+  .row {
+    margin: 0;
+  }
+  
+  .episode-info, .episode-characters {
+    padding: 1rem;
+  }
+  
+  .episode-info h2, .episode-characters h2 {
+    margin-bottom: 1rem;
+  }
+  
+
+  
+  a:hover {
+    color: #6c63ff;
   }
   

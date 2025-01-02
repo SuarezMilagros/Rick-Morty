@@ -1,40 +1,53 @@
 <app-header></app-header>
 <div class="mt-4 ms-4 me-4">
-    <app-navbar></app-navbar>>
+  <app-navbar></app-navbar>
 </div>
-<div class="container py-4">
-    <div class="row"  >
-      <div
-        class="col-lg-4 col-md-6 mb-4"
-        *ngFor="let episode of filteredEpisodes"
-      >
-      <div class="episode-card" (click)="openDetails(episode.id)">
-        <h3>{{ episode.name }}</h3>
-        <p><strong>Air Date:</strong> {{ episode.air_date }}</p>
-        <button (click)="toggleFavorite(episode)">
-          {{ episode.isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
-        </button>
-      </div>
-      
-      </div>
+<div class="mt-4 ms-4 me-4">
+<form class="d-flex" role="search">
+  <input 
+    class="form-control me-2 custom-search-input" 
+    type="search" 
+    placeholder="Search..." 
+    aria-label="Buscar" 
+    [(ngModel)]="searchQuery" 
+    name="searchQuery" 
+    (input)="searchEpisodes()"
+    required
+  />
+  <button class="btn btn-outline-primary" type="submit" >Search</button>
+</form>
+</div>
+
+<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 row-cols-lg-5 g-4 mt-2 ms-2 me-2">
+  <div class="col mb-4 custom-card" *ngFor="let episode of filteredEpisodes">
+    <div class="episode-card" (click)="openDetails(episode.id)">
+      <h3>Episode {{ episode.id }}</h3>
+      <p>{{ episode.name }}</p>
+      <p>S{{ episode.episode.split('E')[0].replace('S', '') }}E{{ episode.episode.split('E')[1] }}</p>
+      <p>Air Date: {{ episode.air_date }}</p>
+      <button (click)="toggleFavorite(episode)">
+        {{ episode.isFavorite ? 'Remove from Favorites' : 'Add to Favorites' }}
+      </button>
     </div>
-  
-    <nav *ngIf="info.pages > 1" aria-label="Pagination">
-      <ul class="pagination justify-content-center">
-        <li class="page-item" [class.disabled]="!info.prev">
-          <button class="page-link" (click)="changePage('prev')">Previous</button>
-        </li>
-        <li
-          class="page-item"
-          [class.active]="currentPage === page"
-          *ngFor="let page of pages"
-        >
-          <button class="page-link" (click)="changePage(page)">{{ page }}</button>
-        </li>
-        <li class="page-item" [class.disabled]="!info.next">
-          <button class="page-link" (click)="changePage('next')">Next</button>
-        </li>
-      </ul>
-    </nav>
   </div>
-  
+</div>
+
+
+
+<nav *ngIf="info.pages > 1" aria-label="Pagination">
+<ul class="pagination justify-content-center">
+<li class="page-item" [class.disabled]="!info.prev">
+<button class="page-link" (click)="changePage('prev')">Previous</button>
+</li>
+<li
+class="page-item"
+[class.active]="currentPage === page"
+*ngFor="let page of pages"
+>
+<button class="page-link" (click)="changePage(page)">{{ page }}</button>
+</li>
+<li class="page-item" [class.disabled]="!info.next">
+<button class="page-link" (click)="changePage('next')">Next</button>
+</li>
+</ul>
+</nav>
